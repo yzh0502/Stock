@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+public class Stock {
+    private ArrayList<Item> items;
+    public Stock() {
+        items = new ArrayList<>();
+    }
+
+    public void addItem(String name, float price, int quantity) {
+        items.add(new Item(name, price, quantity));
+        System.out.println("Item added: " + name);
+    }
+
+    public void removeItem(String name) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                items.remove(item);
+                System.out.println("Item removed: " + name);
+                return;
+            }
+        }
+        System.out.println("Item not found: " + name);
+    }
+
+
+    public void addStock(String name, int amount) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                item.addStock(amount);
+                System.out.println("Stock added to item: " + name);
+                return;
+            }
+        }
+        System.out.println("Item not found: " + name);
+    }
+
+
+    public void displayItemDetails(String name) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                System.out.println("Item: " + name + ", Price: £" + item.getPrice() + ", Quantity: " + item.getQuantity());
+                return;
+            }
+        }
+        System.out.println("Item not found: " + name);
+    }
+    }
